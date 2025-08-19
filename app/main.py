@@ -11,10 +11,8 @@ def load_environment_config():
         env = st.secrets["STREAMLIT_ENV"]
         print(f"Using environment from Streamlit secrets: {env}")
     except (KeyError, FileNotFoundError):
-        # Fall back to environment variable
-        env = os.getenv('STREAMLIT_ENV', 'dev')
-        print(f"Using environment from ENV variable: {env}")
-    
+        print(f"Using default env variable: {env}")
+
     # Get the project root directory (parent of app folder)
     project_root = Path(__file__).parent.parent
     source_config = project_root / f"config-{env}.toml"
